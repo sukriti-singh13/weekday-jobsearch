@@ -1,10 +1,16 @@
-import {  ThemeProvider, Typography, createTheme } from '@mui/material';
+import { ThemeProvider, Typography, createTheme } from '@mui/material';
 import './App.css';
 import JobFilters from './components/JobFilters/JobFilters';
+import JobPosts from './components/JobPosts/JobPosts';
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#55EFC4',
+    },
+  },
   typography: {
-    fontFamily: ['Lexend', 'sans-serif'].join(','),
+    fontFamily: ['Open Sans', 'sans-serif'].join(','),
   },
 });
 function App() {
@@ -15,6 +21,7 @@ function App() {
           👋 Hey There ,
         </Typography>
         <JobFilters />
+        <JobPosts />
       </ThemeProvider>
     </main>
   );
