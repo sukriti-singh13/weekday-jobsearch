@@ -1,7 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import * as CONSTANTS from '../../constants/app';
-
 export const jobsApi = createApi({
   reducerPath: 'jobsApi',
   baseQuery: fetchBaseQuery({ baseUrl: CONSTANTS.BASE_URL }),
@@ -21,3 +20,5 @@ export const jobsApi = createApi({
     }),
   }),
 });
+
+export const { useGetJobsQuery } = jobsApi;
