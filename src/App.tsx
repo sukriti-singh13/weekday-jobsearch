@@ -1,4 +1,4 @@
-import { ThemeProvider, Typography, createTheme } from '@mui/material';
+import { Box, ThemeProvider, Typography, createTheme } from '@mui/material';
 import './App.css';
 import JobFilters from './components/JobFilters/JobFilters';
 import JobPosts from './components/JobPosts/JobPosts';
@@ -17,10 +17,12 @@ function App() {
   return (
     <main className='jobs-layout'>
       <ThemeProvider theme={theme}>
-        <Typography variant='h6' component='h1'>
-          👋 Hey There ,
-        </Typography>
-        <JobFilters />
+        <Box>
+          <Typography variant='h6' component='h1' marginBottom={2}>
+            👋 Hey There ,
+          </Typography>
+          <JobFilters />
+        </Box>
         <JobPosts />
       </ThemeProvider>
     </main>

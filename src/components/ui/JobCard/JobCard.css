@@ -1,0 +1,27 @@
+.MuiCard-root {
+  width: fit-content;
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  max-width: 400px;
+}
+.company-name {
+  color: #8b8b8b;
+  font-size: 14px;
+  font-weight: 600;
+}
+.role-name {
+  font-weight: 400;
+  font-size: 15px;
+}
+.location {
+  font-size: 10px;
+}
+.about-us {
+  font-size: 14px;
+  font-weight: 900;
+}
+.description {
+  font-size: 14px;
+  font-weight: 100;
+}
