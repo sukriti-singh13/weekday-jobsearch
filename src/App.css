@@ -1,3 +1,5 @@
-main {
-  background-color: #f8f9fa;
+.jobs-layout{
+  display:grid;
+  gap:1rem;
+  padding:2rem;
 }
