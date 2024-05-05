@@ -5,6 +5,7 @@ export const getFilteredJobs = (
   jobs: jobTypes.Job[],
   filters: filterTypes.Filters
 ) => {
+  if (!jobs) return [];
   return jobs.filter((job) => {
     const rolesMatcher = filters.roles?.length
       ? filters.roles.includes(job.jobRole)

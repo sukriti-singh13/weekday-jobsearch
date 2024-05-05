@@ -14,6 +14,7 @@ const theme = createTheme({
   },
 });
 function App() {
+
   return (
     <main className='jobs-layout'>
       <ThemeProvider theme={theme}>
