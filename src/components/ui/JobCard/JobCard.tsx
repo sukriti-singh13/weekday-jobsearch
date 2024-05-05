@@ -22,8 +22,8 @@ const JobCard = ({
   title: string;
   description: string;
   companyName: string;
-  location: string;
-  experience: string;
+  location: string | null;
+  experience: number | null;
   minSalary: number | null;
   maxSalary: number | null;
   logo: string;
