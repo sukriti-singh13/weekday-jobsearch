@@ -74,7 +74,10 @@ const JobPosts = () => {
           />
         ))}
       </Box>
-      <Box className='loader-main'>{isFetching && <Loader />}</Box>
+      <Box className='loader-main'>
+        {isFetching &&
+          currentData?.totalCount !== currentData?.jdList.length && <Loader />}
+      </Box>
     </>
   );
 };
