@@ -1,9 +1,6 @@
 import { Autocomplete, TextField } from '@mui/material';
 import './AutoComplete.css';
-type Option = {
-  value: string;
-  label: string;
-};
+import * as uiComponentTypes from '../../../types/uiComponents';
 
 const DropDown = ({
   allowMultiple = false,
@@ -11,13 +8,8 @@ const DropDown = ({
   defaultValue = undefined,
   id = 'dropdown',
   label = 'Select',
-}: {
-  allowMultiple: boolean;
-  options: Option[];
-  defaultValue?: Option;
-  id: string;
-  label: string;
-}) => {
+  onSelection,
+}: uiComponentTypes.AutoCompleteProps) => {
   return (
     <Autocomplete
       className='autoComplete'
@@ -27,6 +19,7 @@ const DropDown = ({
       getOptionLabel={(option) => option.label}
       renderInput={(params) => <TextField {...params} label={label} />}
       defaultValue={defaultValue}
+      onChange={(_, value) => onSelection(value)}
     />
   );
 };
