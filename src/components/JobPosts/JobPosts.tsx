@@ -15,8 +15,8 @@ const JobPosts = () => {
     filters: filterTypes.FilterStore;
   }>((state) => state.filters.activeFilters) as filterTypes.Filters;
 
-  const { status, currentData, isFetching, data } = useGetJobsQuery(page);
-  console.log(data, currentData);
+  const { currentData, isFetching } = useGetJobsQuery(page);
+
   const handleScroll = () => {
     console.log(
       document.documentElement.offsetHeight -
@@ -37,14 +37,25 @@ const JobPosts = () => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isFetching, status]);
+  }, [isFetching]);
 
   const filteredJobs = getFilteredJobs(currentData?.jdList, filters);
- if(!filteredJobs.length && !isFetching){
-  return <Paper elevation={3} sx={{paddingX:'2rem',paddingY:'1rem', textAlign:'center', width:'fit-content', margin:'auto'}}>
-    <h4>No Jobs Found</h4>
-  </Paper>
- }
+  if (!filteredJobs.length && !isFetching) {
+    return (
+      <Paper
+        elevation={3}
+        sx={{
+          paddingX: '2rem',
+          paddingY: '1rem',
+          textAlign: 'center',
+          width: 'fit-content',
+          margin: 'auto',
+        }}
+      >
+        <h4>No Jobs Found</h4>
+      </Paper>
+    );
+  }
   return (
     <>
       <Box className='job-posts-layout'>
@@ -59,6 +70,7 @@ const JobPosts = () => {
             location={job.location}
             minSalary={job.minJdSalary}
             maxSalary={job.maxJdSalary}
+            salaryCurrencyCode={job.salaryCurrencyCode}
           />
         ))}
       </Box>

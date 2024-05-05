@@ -1,5 +1,7 @@
-.autoComplete {
-  width:100%;
-padding: 2px;
+.MuiInputBase-root .MuiChip-root {
+  border-radius: 4px !important;
 }
-
+.MuiAutocomplete-popupIndicator {
+  border-left: 1px solid #e0e0e0 !important;
+  border-radius: 0 !important;
+}

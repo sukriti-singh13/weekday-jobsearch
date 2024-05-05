@@ -67,7 +67,6 @@ const JobFilters = () => {
         onSelection={(option) => handleFilterChange('minBasePay', option)}
       />
       <TextField
-        sx={{ width: '100%' }}
         id='company-name'
         label='Company Name'
         variant='outlined'

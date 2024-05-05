@@ -12,13 +12,13 @@ const DropDown = ({
 }: uiComponentTypes.AutoCompleteProps) => {
   return (
     <Autocomplete
-      className='autoComplete'
       id={id}
       multiple={allowMultiple}
       options={options}
       getOptionLabel={(option) => option.label}
       renderInput={(params) => <TextField {...params} label={label} />}
       defaultValue={defaultValue}
+      sx={{ minWidth: 248 }}
       onChange={(_, value) => onSelection(value)}
     />
   );

@@ -20,6 +20,7 @@ const JobCard = ({
   minSalary,
   maxSalary,
   logo,
+  salaryCurrencyCode,
 }: {
   title: string;
   description: string;
@@ -29,9 +30,14 @@ const JobCard = ({
   minSalary: number | null;
   maxSalary: number | null;
   logo: string;
+  salaryCurrencyCode: string | null;
 }) => {
   const [open, setOpen] = useState(false);
-  const salary = getEstimatedSalary({ minSalary, maxSalary });
+  const salary = getEstimatedSalary({
+    minSalary,
+    maxSalary,
+    salaryCurrencyCode,
+  });
 
   const maxLength = 150;
   const handleClose = () => {
@@ -77,16 +83,17 @@ const JobCard = ({
               : `${description.substring(0, maxLength)}...`}
           </Typography>
           <Box
+            className='show-more'
             sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}
           >
             <Button size='small' onClick={() => setOpen(true)}>
-              {!open && 'Show More'}
+              Show More
             </Button>
           </Box>
 
           {experience && (
             <>
-              <Typography color='text.secondary'  sx={{fontSize:'13px'}}>
+              <Typography color='text.secondary' sx={{ fontSize: '13px' }}>
                 Minimum Experience
               </Typography>
               <Typography color='text.secondary'>
@@ -96,8 +103,13 @@ const JobCard = ({
           )}
         </CardContent>
         <CardActions sx={{ width: '100%', marginTop: 'auto' }}>
-          <Button sx={{ width: '100%' }} size='large' variant='contained'>
-            Easy Apply
+          <Button
+            sx={{ width: '100%' }}
+            size='large'
+            variant='contained'
+            disableElevation
+          >
+            ⚡ Easy Apply
           </Button>
         </CardActions>
       </Card>
