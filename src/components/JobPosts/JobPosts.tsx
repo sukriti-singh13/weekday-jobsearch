@@ -21,8 +21,8 @@ const JobPosts = () => {
     if (
       document.documentElement.offsetHeight -
         (window.innerHeight + document.documentElement.scrollTop) >
-        30 ||
-      isFetching
+        5 || 
+      isFetching || currentData?.totalCount === currentData?.jdList.length
     )
       return;
     if (currentData?.jdList.length < currentData?.totalCount) {
