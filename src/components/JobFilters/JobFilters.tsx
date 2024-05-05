@@ -9,7 +9,11 @@ import * as filterTypes from '../../types/filters';
 
 const JobFilters = () => {
   const dispatch = useDispatch();
-
+/**
+ * Updates filter state for a given key with various value types (string, array, object, or null).
+ * @param key - Filter key to update.
+ * @param value - New value for the filter.
+ */
   const handleFilterChange = (
     key: string,
     value: filterTypes.FilterOption | filterTypes.FilterOption[] | null | string

@@ -18,10 +18,6 @@ const JobPosts = () => {
   const { currentData, isFetching } = useGetJobsQuery(page);
 
   const handleScroll = () => {
-    console.log(
-      document.documentElement.offsetHeight -
-        (window.innerHeight + document.documentElement.scrollTop)
-    );
     if (
       document.documentElement.offsetHeight -
         (window.innerHeight + document.documentElement.scrollTop) >

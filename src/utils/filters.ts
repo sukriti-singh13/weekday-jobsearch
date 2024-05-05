@@ -1,6 +1,12 @@
 import * as filterTypes from '../types/filters';
 import * as jobTypes from '../types/jobs';
-
+/**
+ * Filters a list of jobs based on specified criteria in filters.
+ * Considers role, experience, base pay, and company name.
+ * @param jobs - Array of jobs to filter.
+ * @param filters - Criteria to use for filtering.
+ * @returns Filtered array of jobs.
+ */
 export const getFilteredJobs = (
   jobs: jobTypes.Job[],
   filters: filterTypes.Filters

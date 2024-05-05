@@ -1,6 +1,4 @@
 import {
-  Box,
-  Grid,
   ThemeProvider,
   Typography,
   createTheme,
