@@ -17,9 +17,7 @@ const style = {
 
 export default function JobModal({ open, handleClose, content }) {
   return (
-  
       <Modal
-      
         open={open}
         onClose={handleClose}
         aria-labelledby='modal-modal-title'

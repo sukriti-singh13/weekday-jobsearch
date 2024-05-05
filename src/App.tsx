@@ -1,4 +1,10 @@
-import { Box, ThemeProvider, Typography, createTheme } from '@mui/material';
+import {
+  Box,
+  Grid,
+  ThemeProvider,
+  Typography,
+  createTheme,
+} from '@mui/material';
 import './App.css';
 import JobFilters from './components/JobFilters/JobFilters';
 import JobPosts from './components/JobPosts/JobPosts';
@@ -12,23 +18,19 @@ const theme = createTheme({
   typography: {
     fontFamily: ['Open Sans', 'sans-serif'].join(','),
     button: {
-      textTransform: "none"
-    }
+      textTransform: 'none',
+    },
   },
 });
 function App() {
-
-  
-
   return (
-    <main className='jobs-layout'>
+    <main>
       <ThemeProvider theme={theme}>
-        <Box>
-          <Typography variant='h6' component='h1' marginBottom={2}>
-            👋 Hey There ,
-          </Typography>
-          <JobFilters />
-        </Box>
+        <Typography variant='h6' component='h1' width={'fit-content'}>
+          👋 Hey There ,
+        </Typography>
+        <JobFilters />
+
         <JobPosts />
       </ThemeProvider>
     </main>

@@ -1,6 +1,8 @@
-.jobs-layout {
+main {
   display: grid;
-  gap: 5rem;
+  place-content: center;
+  gap: 2rem;
   padding-block: 2rem;
   padding-inline: 3rem;
+  margin: 0 auto;
 }
