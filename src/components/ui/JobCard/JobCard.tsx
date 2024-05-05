@@ -8,6 +8,8 @@ import {
 } from '@mui/material';
 import './JobCard.css';
 import { getEstimatedSalary } from '../../../utils/text';
+import { useState } from 'react';
+import JobModal from '../Modal/Modal';
 
 const JobCard = ({
   title,
@@ -28,53 +30,78 @@ const JobCard = ({
   maxSalary: number | null;
   logo: string;
 }) => {
+  const [open, setOpen] = useState(false);
   const salary = getEstimatedSalary({ minSalary, maxSalary });
+
+  const maxLength = 150;
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
-    <Card
-      variant='elevation'
-      elevation={4}
-      sx={{
-        borderRadius: '20px',
-      }}
-    >
-      <CardContent>
-        <Box sx={{ display: 'flex', gap: '1rem' }}>
-          <img src={logo} alt='logo' height={32} width={32} />
-          <Box>
-            <Typography className='company-name' component='h1'>
-              {companyName}
-            </Typography>
-            <Typography className='role-name' component='h2'>
-              {title}
-            </Typography>
-            <Typography className='location'>{location}</Typography>
+    <>
+      <JobModal open={open} handleClose={handleClose} content={description} />
+      <Card
+        variant='elevation'
+        elevation={4}
+        sx={{
+          borderRadius: '20px',
+        }}
+      >
+        <CardContent>
+          <Box sx={{ display: 'flex', gap: '1rem' }}>
+            <img src={logo} alt='logo' height={32} width={32} />
+            <Box>
+              <Typography className='company-name' component='h1'>
+                {companyName}
+              </Typography>
+              <Typography className='role-name' component='h2'>
+                {title}
+              </Typography>
+              <Typography className='location'>{location}</Typography>
+            </Box>
           </Box>
-        </Box>
-        {salary && (
-          <Typography sx={{ mt: 1 }} color='text.secondary'>
-            Estimated Salary: {salary}
-          </Typography>
-        )}
-        <Typography sx={{ mt: 1.5 }}>About Company:</Typography>
+          {salary && (
+            <Typography sx={{ mt: 1 }} color='text.secondary'>
+              Estimated Salary: {salary}
+            </Typography>
+          )}
+          <Typography sx={{ mt: 1.5 }}>About Company:</Typography>
 
-        <Typography fontWeight={500}>About Us</Typography>
-        <Typography gutterBottom className='description'>
+          <Typography fontWeight={500}>About Us</Typography>
+          {/* <Typography gutterBottom className='description'>
           {description}
-        </Typography>
+        </Typography> */}
+          <Typography gutterBottom className='description'>
+            {description.length <= maxLength
+              ? description
+              : `${description.substring(0, maxLength)}...`}
+          </Typography>
+          <Box
+            sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+          >
+            <Button size='small' onClick={() => setOpen(true)}>
+              {!open && 'Show More'}
+            </Button>
+          </Box>
 
-        {experience && (
-          <>
-            <Typography color='text.secondary'>Minimum Experience</Typography>
-            <Typography color='text.secondary'>{experience} years </Typography>
-          </>
-        )}
-      </CardContent>
-      <CardActions sx={{ width: '100%', marginTop: 'auto' }}>
-        <Button sx={{ width: '100%' }} size='large' variant='contained'>
-          Easy Apply
-        </Button>
-      </CardActions>
-    </Card>
+          {experience && (
+            <>
+              <Typography color='text.secondary'  sx={{fontSize:'13px'}}>
+                Minimum Experience
+              </Typography>
+              <Typography color='text.secondary'>
+                {experience} years{' '}
+              </Typography>
+            </>
+          )}
+        </CardContent>
+        <CardActions sx={{ width: '100%', marginTop: 'auto' }}>
+          <Button sx={{ width: '100%' }} size='large' variant='contained'>
+            Easy Apply
+          </Button>
+        </CardActions>
+      </Card>
+    </>
   );
 };
 

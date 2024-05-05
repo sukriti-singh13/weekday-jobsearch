@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Paper } from '@mui/material';
 import JobCard from '../ui/JobCard/JobCard';
 import './JobPosts.css';
 import { useGetJobsQuery } from '../../store/services/jobs';
@@ -40,7 +40,11 @@ const JobPosts = () => {
   }, [isFetching, status]);
 
   const filteredJobs = getFilteredJobs(currentData?.jdList, filters);
- 
+ if(!filteredJobs.length && !isFetching){
+  return <Paper elevation={3} sx={{paddingX:'2rem',paddingY:'1rem', textAlign:'center', width:'fit-content', margin:'auto'}}>
+    <h4>No Jobs Found</h4>
+  </Paper>
+ }
   return (
     <>
       <Box className='job-posts-layout'>
